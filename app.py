@@ -4,7 +4,8 @@ import numpy as np
 import pandas as pd
 
 app = FastAPI()
-model = joblib.load("model.pkl")
+model = joblib.load("house_price_model.pkl")
+
 
 @app.post("/predict")
 async def predict(request: Request):
