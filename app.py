@@ -12,4 +12,5 @@ async def predict(request: Request):
     data = await request.json()
     df = pd.DataFrame([data])
     pred = model.predict(df)
-    return {"prediction": float(pred[0])}
+    price_mxn = np.expm1(pred[0])
+    return {"prediction": float(price_mxn)}
