@@ -1,9 +1,18 @@
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 import joblib
 import numpy as np
 import pandas as pd
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],            # 👈 Allow any origin
+    allow_credentials=True,
+    allow_methods=["*"],            # 👈 Allow all HTTP methods
+    allow_headers=["*"],            # 👈 Allow all headers
+)
 model = joblib.load("house_price_model.pkl")
 
 
